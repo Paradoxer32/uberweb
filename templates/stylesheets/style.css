@@ -1,0 +1,19 @@
+/* CSS styles! */
+
+@font-face {
+	font-family: Recursize-casual;
+	src: url("../fonts/Recursive_Casual-Black.ttf");
+}
+@font-face {
+	font-family: Recursize-monospace;
+	src: url("../fonts/Recursive_Monospace_Casual-Light.ttf");
+}
+
+h1 {
+	color: red;
+	font-family: Recursize-casual;
+}
+p {
+	color: blue;
+	font-family: Recursize-monospace;
+}
