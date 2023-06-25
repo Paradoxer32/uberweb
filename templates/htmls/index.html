@@ -4,12 +4,12 @@
 <html>
     <head>
         <title>{{name}}</title>
-        <link rel='stylesheet' href='public/stylesheets/style.css' />
-        <link rel="shortcut icon" type="image/png" href='{{favicon_path}}' />
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+        <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename=favicon_path) }}" />
     </head>
     <body>
         <h1>   # Welcome to {{name}}</h1>
         <p>         > It worked succesfully!</p>
-        <script src='public/javascripts/main.js'></script>
+        <script src="{{ url_for('static', filename='javascripts/main.js') }}"></script>
     </body>
 </html>

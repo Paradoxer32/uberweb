@@ -9,3 +9,8 @@ port = '8000'
 # Default debug : True
 debug = True # Debug program.
 
+# Default static folder : 'public'
+static_folder = 'public'
+
+# Default template folder : 'public'
+template_folder = 'public'
