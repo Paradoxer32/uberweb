@@ -6,7 +6,7 @@ from sqlite3 import connect
 
 
 # Define web-app.
-app = Flask(__name__, template_folder=conf.template_folder)
+app = Flask(conf.app_name, template_folder=conf.template_folder)
 
 # Declare static folder.
 app.static_folder = conf.static_folder
