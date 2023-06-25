@@ -52,4 +52,4 @@ And you will have a web-app structure for your project!:
     8 directories, 10 files
 
 # Contribute with us!
-Develop this project and add if you liked Develop this project and add if you liked, add your name in 'developers.md'!add your name in 'developers.md'!
+Develop this project and add if you liked Develop this project and add if you liked, add your name in 'DEVELOPERS.md'!
