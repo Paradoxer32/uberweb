@@ -13,9 +13,10 @@ Before everything, we need to clone this repository.
 
     $ git clone "github.com/Paradoxer32/uberweb"
 
-after that, we must define 'uberweb' app-generator path!
+After that, go to 'uberweb' directory and export a variable for uberweb:
 
-    $ export uberweb=./uberweb/uberweb.py
+    $ cd uberweb
+    $ export uberweb="$(pwd)/uberweb.py"
 
 Now, we have a variable for run uberweb!
 Go to your project directory!
