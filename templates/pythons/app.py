@@ -12,7 +12,7 @@ app = Flask(conf.app_name, template_folder=conf.template_folder)
 app.static_folder = conf.static_folder
 
 # Connect to database and its cursor!
-db = connect("databases/db.sqlite3")
+db = connect(conf.db)
 cursor = db.cursor()
 
 @app.route('/')

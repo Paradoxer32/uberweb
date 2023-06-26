@@ -17,3 +17,7 @@ static_folder = 'public'
 
 # Default template folder : 'public'
 template_folder = 'public'
+
+# Default database : 'databases/db.sqlite3'
+db = 'databases/db.sqlite3'
+
