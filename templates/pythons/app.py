@@ -1,7 +1,8 @@
 # Modules.
 import conf
-from flask import Flask
+from flask import Flask, request
 from routes.index import index
+from routes.err404 import err404
 from sqlite3 import connect
 
 
@@ -23,6 +24,16 @@ def home():
     template = index()
 
     return template
+
+@app.errorhandler(404)
+def PageNotFound(arg):
+    """Doc: 404 error page."""
+    
+    # Get base url. (False url)
+    current_url = request.base_url
+
+    return err404(current_url)
+    
 
 if __name__ == '__main__':
     # Run!

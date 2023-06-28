@@ -1,0 +1,13 @@
+<!-- 404 Error is here! -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTTP(404 error): PageNotFound</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+		<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename=favicon_path) }}" />
+	</head>
+	<body>
+		<h1>HTTP(404 error): '{{current_url}}' page not found!</h1>
+	</body>
+</html>
