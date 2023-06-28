@@ -37,10 +37,12 @@ And you will have a web-app structure for your project!:
     ├── databases
     │   └── db.sqlite3
     ├── public
+    │   ├── err404.html
     │   ├── fonts
     │   │   ├── Recursive_Casual-Black.ttf
     │   │   └── Recursive_Monospace_Casual-Light.ttf
     │   ├── images
+    │   │   ├── err404favicon.png
     │   │   └── favicon.png
     │   ├── index.html
     │   ├── javascripts
@@ -48,9 +50,11 @@ And you will have a web-app structure for your project!:
     │   └── stylesheets
     │       └── style.css
     └── routes
+        ├── err404.py
         └── index.py
+    
+    8 directories, 13 files
 
-    8 directories, 10 files
 
 # Contribute with us!
 Develop this project and add if you liked Develop this project and add if you liked, add your name in 'DEVELOPERS.md'!
