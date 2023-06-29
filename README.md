@@ -24,9 +24,17 @@ Go to your project directory!
     $ mkdir myproject
     $ cd myproject
 
-Then generate your web-app!:
+Then generate your web-app!(in current path):
 
     $ python $uberweb
+
+For generate web-app in another path, we can use:
+
+    $ python $uberweb --path <your path> 
+
+Or with its short form:
+
+    $ python $uberweb -p <your path> 
 
 And you will have a web-app structure for your project!:
 
