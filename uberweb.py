@@ -1,3 +1,6 @@
+# Version.
+version = '1.4(Beta)'
+
 # Modules.
 from os import mkdir
 from shutil import copy
@@ -25,9 +28,9 @@ parser.add_argument(
 parser.add_argument(
                     '--version',
                     '-V',
-                    help='Show program version!',
+                    help='Show version!',
                     action='version',
-                    version=f'Uberweb 1.4',
+                    version=f'Uberweb {version}',
                     )
 
 # Parse args.
