@@ -3,11 +3,45 @@ from os import mkdir
 from shutil import copy
 from os.path import abspath, exists
 from rich import print as cprint
+from argparse import ArgumentParser
 
 
-# Define dir and destination directory.
-dir = abspath(__file__).replace('uberweb.py', '')
-dst_path = abspath('.')
+# Define argument parser.
+parser = ArgumentParser(
+                        prog='uberweb',
+                        description="Flask web-app generator!",
+                        epilog="git repository : 'https://github.com/Paradoxer32/uberweb'",
+                        )
+
+# Add positional argument.
+parser.add_argument(
+                    '--path',
+                    '-p',
+                    help='Destination path for create your path, there!',
+                    default='.',
+                    )
+
+# Parse args.
+args = parser.parse_args()
+
+# Declare path.
+path = args.path
+
+# Does path exist?
+# Yes!
+if exists(path):
+
+    # Define dir and destination directory.
+    dir = abspath(__file__).replace('uberweb.py', '')
+    dst_path = abspath(path)
+
+# No!
+else:
+    
+    cprint(f"[red]* '{path}' doesn't exist! Check it out...[/red]")
+    
+    # Exit program.
+    exit()
 
 # Declare dirs for create.
 dirs = [
@@ -42,7 +76,7 @@ for fold in dirs:
 
     # Does this dir exists?
     # Yes!
-    if exists(fold):
+    if exists(f"{dst_path}/{fold}"):
 
         cprint(f"[yellow]% '{fold}' exists, Pass.[/yellow]")
 
@@ -60,7 +94,7 @@ for file in tree.keys():
 
     # Does this file exist?
     # Yes!
-    if exists(file):
+    if exists(f"{dst_path}/{file}"):
         
         cprint(f"[red]* In your directory, something called '{file}' exists![/red]")
 
