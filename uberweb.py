@@ -21,6 +21,15 @@ parser.add_argument(
                     default='.',
                     )
 
+# Add version action.
+parser.add_argument(
+                    '--version',
+                    '-V',
+                    help='Show program version!',
+                    action='version',
+                    version=f'Uberweb 1.4',
+                    )
+
 # Parse args.
 args = parser.parse_args()
 
