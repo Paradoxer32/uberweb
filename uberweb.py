@@ -1,5 +1,5 @@
 # Version.
-version = '1.4(Beta)'
+version = '1.5(Beta)'
 
 # Modules.
 from os import mkdir
