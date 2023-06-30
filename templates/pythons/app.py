@@ -4,6 +4,7 @@ from flask import Flask, request
 from routes.index import index
 from routes.err404 import err404
 from sqlite3 import connect
+from pathlib import Path
 
 
 # Define web-app.
@@ -38,4 +39,8 @@ def PageNotFound(arg):
 if __name__ == '__main__':
     # Run!
     app.run(host=conf.host, port=conf.port, debug=conf.debug)
+
+    # Remove all '.pyc' and '.pyo' files and '__pycache__' directories.
+    for i in Path('.').rglob('*.py[co]'): i.unlink()
+    for i in Path('.').rglob('__pycache__'): i.rmdir()
 
