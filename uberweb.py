@@ -2,11 +2,11 @@
 version = '1.5(Beta)'
 
 # Modules.
+from argparse import ArgumentParser
 from os import mkdir
-from shutil import copy
 from os.path import abspath, exists
 from rich import print as cprint
-from argparse import ArgumentParser
+from shutil import copy
 
 
 # Define argument parser.

@@ -1,10 +1,10 @@
 # Modules.
 import conf
 from flask import Flask, request
-from routes.index import index
-from routes.err404 import err404
-from sqlite3 import connect
 from pathlib import Path
+from routes.err404 import err404
+from routes.index import index
+from sqlite3 import connect
 
 
 # Define web-app.
