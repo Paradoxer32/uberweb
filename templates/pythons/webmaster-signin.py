@@ -6,15 +6,15 @@ from rich.console import Console
 # Define 'rich' console.
 console = Console()
 
+# Connect to database and its cursor.
+db = conenct("databases/db.sqlite3")
+cursor = db.cursor()
+
 console.print("[green]Welcome to uberweb's signin for webmasters!")
 
 
-def Exists(username='', email=''):
+def Exists(arg=''):
     """Doc: This function will check does username and email exist?"""
-
-    # Connect to database and its cursor.
-    db = conenct("databases/db.sqlite3")
-    cursor = db.cursor()
 
     # Select all names in 'Users' table.
     cursor.execute("SELECT * FROM Users")
@@ -32,16 +32,12 @@ def Exists(username='', email=''):
 
     # Does arg-email or arg-username exist in database?
     # Yes!
-    if username in usernames:
-        return 'username'
-
-    # Yes!
-    elif email in emails:
-        return 'email'
+    if arg in usernames or arg in emails:
+        return True
 
     # No!
     else:
-        return None
+        return False
 
 
 # Start program.
@@ -52,7 +48,37 @@ while True:
     # What is goal?
     # > Create user:
     if goal == 'S' or goal == 'signin-wm':
-        pass
+        
+        # Get username.
+        while True:
+            username = console.input("Username")
+            if Exists(username):
+                console.print(f"[red]* '{username}' user already exists!")
+                continue
+
+        # Get email.
+        while True:
+            email = console.input("Email: ")
+            if not '@' in email or not '.com' in email:
+                console.print(f"[red]* Please enter a correct email.")
+                continue
+            elif Exists(email):
+                console.print(f"[red]* '{email}' email already exists!")
+                continue
+
+        # Get password.
+        while True:
+            password = console.input("Password: ")
+        
+        # Get password, again.
+        while True:
+            password_again = console.input("Password again: ")
+            if password_again != password:
+                console.print("[red]* It's not match!")
+                continue
+
+        # Add user!
+        cursor.execute(f"INSERT INTO Users VALUES('{username}', '{email}', '{password}')")
 
     # > Edit user:
     elif goal == 'E' or goal == 'edit-wm':
