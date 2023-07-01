@@ -17,8 +17,8 @@ console.print("[green]Welcome to uberweb's signin for webmasters!")
 def Exists(arg=''):
     """Doc: This function will check does username and email exist?"""
 
-    # Select all names in 'Users' table.
-    cursor.execute("SELECT * FROM Users")
+    # Select all names in 'Webmasters' table.
+    cursor.execute("SELECT * FROM Webmasters")
 
     # Declare webmasters' specifications
     rows = cursor.fetchall()
@@ -85,7 +85,7 @@ while True:
         password = sha256(password.encode('utf-8')).hexdigest()
 
         # Add user!
-        cursor.execute(f"INSERT INTO Users VALUES('{username}', '{email}', '{password}')")
+        cursor.execute(f"INSERT INTO Webmasters VALUES('{username}', '{email}', '{password}')")
 
         console.print("[green]Webmaster created successfully!")
         
