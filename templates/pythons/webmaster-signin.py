@@ -1,17 +1,15 @@
 # Modules.
 from sqlite3 import connect
-from rich.console import Console
+from rich import print as cprint
 from hashlib import sha256
 
 
-# Define 'rich' console.
-console = Console()
 
 # Connect to database and its cursor.
 db = connect("databases/db.sqlite3")
 cursor = db.cursor()
 
-console.print("[green]Welcome to uberweb's signin for webmasters!")
+cprint("[green]Welcome to uberweb's signin for webmasters!")
 
 
 def Exists(arg=''):
@@ -44,7 +42,7 @@ def Exists(arg=''):
 # Start program.
 while True:
 
-    goal = console.input("What do you want here? [S:signin-wm, E:edit-wm, N:nothing] ")
+    goal = input("What do you want here? [S:signin-wm, E:edit-wm, N:nothing] ")
 
     # What is goal?
     # > Create user:
@@ -52,31 +50,31 @@ while True:
         
         # Get username.
         while True:
-            username = console.input("Username: ")
+            username = input("Username: ")
             if Exists(username):
-                console.print(f"[red]* '{username}' user already exists!")
+                cprint(f"[red]* '{username}' user already exists!")
                 continue
             break
 
         # Get email.
         while True:
-            email = console.input("Email: ")
+            email = input("Email: ")
             if not '@' in email or not '.com' in email:
-                console.print(f"[red]* Please enter a correct email.")
+                cprint(f"[red]* Please enter a correct email.")
                 continue
             elif Exists(email):
-                console.print(f"[red]* '{email}' email already exists!")
+                cprint(f"[red]* '{email}' email already exists!")
                 continue
             break
 
         # Get password.
-        password = console.input("Password: ")
+        password = input("Password: ")
 
         # Get password, again. (If it was match, delete its variable.)
         while True:
-            password_again = console.input("Password again: ")
+            password_again = input("Password again: ")
             if password_again != password:
-                console.print("[red]* It's not match!")
+                cprint("[red]* It's not match!")
                 continue
             del password_again
             break
@@ -87,7 +85,7 @@ while True:
         # Add user!
         cursor.execute(f"INSERT INTO Webmasters VALUES('{username}', '{email}', '{password}')")
 
-        console.print("[green]Webmaster created successfully!")
+        cprint("[green]Webmaster created successfully!")
         
         # Commit db.
         db.commit()
@@ -101,12 +99,13 @@ while True:
     elif goal == 'N' or goal == 'nothing':
         
         # Exit program.
-        console.print("[red] Exit...")
+        cprint("[red] Exit...")
 
         exit()
 
     else:
         # Wrong goal.
-        console.print("[red]Please enter 'signin-wm', 'edit-wm' or 'nothing'!('S', 'E' or 'N')")
+        cprint("[red]Please enter 'signin-wm', 'edit-wm' or 'nothing'!('S', 'E' or 'N')")
+
         continue
 
