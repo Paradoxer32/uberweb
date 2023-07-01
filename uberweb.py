@@ -70,6 +70,7 @@ dirs = [
 tree = {
         "app.py": f"{dir}templates/pythons/app.py",
         "conf.py": f"{dir}templates/pythons/conf.py",
+        "webmaster-signin.py": f"{dir}templates/pythons/webmaster-signin.py",
         "databases/db.sqlite3": f"{dir}templates/databases/db.sqlite3",
         "public/images/favicon.png": f"{dir}templates/images/favicon.png",
         "public/images/err404favicon.png": f"{dir}templates/images/err404favicon.png",

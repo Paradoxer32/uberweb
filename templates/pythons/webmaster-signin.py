@@ -1,6 +1,7 @@
 # Modules.
 from sqlite3 import connect
 from rich.console import Console
+from hashlib import sha256
 
 
 # Define 'rich' console.
@@ -69,13 +70,17 @@ while True:
         # Get password.
         while True:
             password = console.input("Password: ")
-        
-        # Get password, again.
+
+        # Get password, again. (If it was match, delete its variable.)
         while True:
             password_again = console.input("Password again: ")
             if password_again != password:
                 console.print("[red]* It's not match!")
                 continue
+            del password_again
+
+        # Encrypt password.
+        password = sha256(password.encode('utf-8')).hexdigest()
 
         # Add user!
         cursor.execute(f"INSERT INTO Users VALUES('{username}', '{email}', '{password}')")
