@@ -8,6 +8,42 @@ console = Console()
 
 console.print("[green]Welcome to uberweb's signin for webmasters!")
 
+
+def Exists(username='', email=''):
+    """Doc: This function will check does username and email exist?"""
+
+    # Connect to database and its cursor.
+    db = conenct("databases/db.sqlite3")
+    cursor = db.cursor()
+
+    # Select all names in 'Users' table.
+    cursor.execute("SELECT * FROM Users")
+
+    # Declare webmasters' specifications
+    rows = cursor.fetchall()
+
+    # Define usernames and emails as empty list.
+    usernames, emails = [], []
+
+    # Append usernames and emails in it.
+    for r in rows:
+        usernames.append(r[0])
+        usernames.append(r[2])
+
+    # Does arg-email or arg-username exist in database?
+    # Yes!
+    if username in usernames:
+        return 'username'
+
+    # Yes!
+    elif email in emails:
+        return 'email'
+
+    # No!
+    else:
+        return None
+
+
 # Start program.
 while True:
 
