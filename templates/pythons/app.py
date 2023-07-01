@@ -41,6 +41,6 @@ if __name__ == '__main__':
     app.run(host=conf.host, port=conf.port, debug=conf.debug)
 
     # Remove all '.pyc' and '.pyo' files and '__pycache__' directories.
-    for i in Path('.').rglob('*.py[co]'): i.unlink()
+    for i in Path('.').rglob('*.py[cod]'): i.unlink()
     for i in Path('.').rglob('__pycache__'): i.rmdir()
 
