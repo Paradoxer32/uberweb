@@ -8,7 +8,7 @@ from hashlib import sha256
 console = Console()
 
 # Connect to database and its cursor.
-db = conenct("databases/db.sqlite3")
+db = connect("databases/db.sqlite3")
 cursor = db.cursor()
 
 console.print("[green]Welcome to uberweb's signin for webmasters!")
@@ -52,10 +52,11 @@ while True:
         
         # Get username.
         while True:
-            username = console.input("Username")
+            username = console.input("Username: ")
             if Exists(username):
                 console.print(f"[red]* '{username}' user already exists!")
                 continue
+            break
 
         # Get email.
         while True:
@@ -66,10 +67,10 @@ while True:
             elif Exists(email):
                 console.print(f"[red]* '{email}' email already exists!")
                 continue
+            break
 
         # Get password.
-        while True:
-            password = console.input("Password: ")
+        password = console.input("Password: ")
 
         # Get password, again. (If it was match, delete its variable.)
         while True:
@@ -78,12 +79,20 @@ while True:
                 console.print("[red]* It's not match!")
                 continue
             del password_again
+            break
 
         # Encrypt password.
         password = sha256(password.encode('utf-8')).hexdigest()
 
         # Add user!
         cursor.execute(f"INSERT INTO Users VALUES('{username}', '{email}', '{password}')")
+
+        console.print("[green]Webmaster created successfully!")
+        
+        # Commit db.
+        db.commit()
+
+        break
 
     # > Edit user:
     elif goal == 'E' or goal == 'edit-wm':
