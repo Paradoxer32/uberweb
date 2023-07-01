@@ -99,7 +99,49 @@ while True:
 
     # > Edit user:
     elif goal == 'E' or goal == 'edit-wm':
-        pass
+        
+        # Get username.
+        while True:
+            username = input("Username: ")
+            if not Exists(username):
+                cprint(f"[red]* '{username}' doesn't exist!")
+                continue
+            break
+
+        # Find user's specifications.
+        cursor.execute(f"SELECT * FROM Webmasters WHERE username='{username}'")
+        row = cursor.fetchall()
+
+        # Get password and check it.
+        while True:
+            password = input("Password: ")
+            if sha256(password.encode('utf-8')).hexdigest() == row[2]:
+                cprint("[red]* Uncorrect password!")
+                continue
+            break
+        
+        # Edit!
+        while True:
+            edit = eval(input(f"""1. Username: {row[0]}
+2. Email: {row[1]}
+3. Password
+    What do you want to edit? Write its number: """))
+            if edit == 1:
+                pass
+
+            elif edit == 2:
+                pass
+
+            elif edit == 3:
+                pass
+
+            else: 
+                cprint("[red]* Invalid number.")
+
+            break
+
+        # Commit db.
+        db.commit()
 
     elif goal == 'N' or goal == 'nothing':
         
