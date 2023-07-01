@@ -1,3 +1,8 @@
+"""
+    name: 'index.py'
+    Doc: Function for return 'home' page.
+"""
+
 # Modules.
 from flask import render_template
 

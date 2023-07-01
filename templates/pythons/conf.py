@@ -1,3 +1,8 @@
+"""
+    name: 'conf.py'
+    Doc: Configuration file!
+"""
+
 # Default app name : 'uberweb-app'
 app_name = 'uberweb-app'
 

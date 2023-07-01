@@ -1,3 +1,8 @@
+"""
+    name: 'err404.py'
+    Doc: Return 404 error template.
+"""
+
 # Modules.
 from flask import render_template
 

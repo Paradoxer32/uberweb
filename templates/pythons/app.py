@@ -1,3 +1,12 @@
+"""
+    name: 'app.py'
+    Doc: This is web-app file for run!
+    You can run it with python(with config):
+        $ python app.py
+    Or run it with flask(without config):
+        $ flask run
+"""
+
 # Modules.
 import conf
 from flask import Flask, request

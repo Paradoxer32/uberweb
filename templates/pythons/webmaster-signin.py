@@ -1,3 +1,8 @@
+"""
+    name: 'webmaster-signin.py'
+    Doc: You can add, remove or edit your webmasters with run this file!
+"""
+
 # Modules.
 from sqlite3 import connect
 from rich import print as cprint
