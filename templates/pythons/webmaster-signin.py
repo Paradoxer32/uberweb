@@ -98,11 +98,57 @@ while True:
         # Commit db.
         db.commit()
 
-        break
 
     # > Remove user:
-    elif goal == 'E' or goal == 'edit-wm':
-        pass
+    elif goal == 'R' or goal == 'remove-wm':
+        
+        # Get username.
+        while True:
+            username = input("Username: ")
+            if not Exists(username):
+                cprint(f"[red]* '{username}' doesn't exist!")
+                continue
+            break
+
+        # Get user's specifications.
+        cursor.execute(f"SELECT * FROM Webmasters WHERE username='{username}'")
+        rows = cursor.fetchall()
+        row = rows[0]
+        db.commit()
+
+        # Get password.
+        while True:
+            password = input("Password: ")
+            if sha256(password.encode('utf-8')).hexdigest() != row[2]:
+                cprint("[red]* Uncorrect password!")
+                continue
+            break
+
+        # Are user sure?
+        while True:
+            sure = input(f"Are sure to remove '{username}' webmaster [y/N]? ")
+
+            # Yes!
+            if sure == 'y':
+                
+                # Delete user!
+                cursor.execute(f"DELETE FROM Webmasters WHERE username='{username}'")
+                db.commit()
+
+                cprint("[green]> Webmaster removed successfully!")
+
+                break
+
+            # No!
+            elif sure == 'N':
+                
+                cprint("[red] Cancel...")
+                
+                break
+
+            else:
+                cprint("[red]* Yes or No! -> [y/N]")
+
 
     elif goal == 'N' or goal == 'nothing':
         
@@ -113,7 +159,7 @@ while True:
 
     else:
         # Wrong goal.
-        cprint("[red]Please enter 'signin-wm', 'edit-wm' or 'nothing'!('S', 'E' or 'N')")
+        cprint("[red]Please enter 'signin-wm', 'remove-wm' or 'nothing'!('S', 'R' or 'N')")
 
         continue
 
