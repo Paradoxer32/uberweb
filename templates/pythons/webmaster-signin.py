@@ -38,6 +38,9 @@ def Exists(arg=''):
         usernames.append(r[0])
         usernames.append(r[2])
 
+    # Hash arg.
+    arg = sha256(arg.encode('utf-8')).hexdigest()
+
     # Does arg-email or arg-username exist in database?
     # Yes!
     if arg in usernames or arg in emails:
@@ -88,7 +91,9 @@ while True:
             del password_again
             break
 
-        # Encrypt password.
+        # Encrypt username, email and password.
+        username = sha256(username.encode('utf-8')).hexdigest()
+        email = sha256(username.encode('utf-8')).hexdigest()
         password = sha256(password.encode('utf-8')).hexdigest()
 
         # Add user!
@@ -111,8 +116,11 @@ while True:
                 continue
             break
 
+        # Encrypt username.
+        enusername = sha256(username.encode('utf-8')).hexdigest()
+
         # Get user's specifications.
-        cursor.execute(f"SELECT * FROM Webmasters WHERE username='{username}'")
+        cursor.execute(f"SELECT * FROM Webmasters WHERE username='{enusername}'")
         rows = cursor.fetchall()
         row = rows[0]
         db.commit()
@@ -148,7 +156,7 @@ while True:
                 break
 
             else:
-                cprint("[red]* Yes or No! -> [y/N]")
+                cprint("[red]* Yes or No! -> [[y/N]]")
 
 
     elif goal == 'N' or goal == 'nothing':
