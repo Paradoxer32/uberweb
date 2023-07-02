@@ -7,6 +7,7 @@
 from sqlite3 import connect
 from rich import print as cprint
 from hashlib import sha256
+from getpass import getpass
 
 
 
@@ -76,11 +77,11 @@ while True:
             break
 
         # Get password.
-        password = input("Password: ")
+        password = getpass("Password: ")
 
         # Get password, again. (If it was match, delete its variable.)
         while True:
-            password_again = input("Password again: ")
+            password_again = getpass("Password again: ")
             if password_again != password:
                 cprint("[red]* It's not match!")
                 continue
@@ -118,7 +119,7 @@ while True:
 
         # Get password.
         while True:
-            password = input("Password: ")
+            password = getpass("Password: ")
             if sha256(password.encode('utf-8')).hexdigest() != row[2]:
                 cprint("[red]* Uncorrect password!")
                 continue
