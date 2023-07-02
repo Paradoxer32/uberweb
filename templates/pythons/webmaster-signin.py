@@ -20,6 +20,10 @@ db.commit()
 
 cprint("[green]Welcome to uberweb's signin for webmasters!")
 
+def SHA256(data='', encode='utf-8'):
+    """Doc: Hash data with 'sha256' method."""
+    
+    return sha256(data.encode(encode)).hexdigest()
 
 def Exists(arg=''):
     """Doc: This function will check does username and email exist?"""
@@ -92,9 +96,9 @@ while True:
             break
 
         # Encrypt username, email and password.
-        username = sha256(username.encode('utf-8')).hexdigest()
-        email = sha256(username.encode('utf-8')).hexdigest()
-        password = sha256(password.encode('utf-8')).hexdigest()
+        username = SHA256(username)
+        email = SHA256(email)
+        password = SHA256(password)
 
         # Add user!
         cursor.execute(f"INSERT INTO Webmasters VALUES('{username}', '{email}', '{password}')")
@@ -128,7 +132,7 @@ while True:
         # Get password.
         while True:
             password = getpass("Password: ")
-            if sha256(password.encode('utf-8')).hexdigest() != row[2]:
+            if SHA256(password) != row[2]:
                 cprint("[red]* Uncorrect password!")
                 continue
             break
