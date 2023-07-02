@@ -14,6 +14,9 @@ from hashlib import sha256
 db = connect("databases/db.sqlite3")
 cursor = db.cursor()
 
+# Commit db.
+db.commit()
+
 cprint("[green]Welcome to uberweb's signin for webmasters!")
 
 
