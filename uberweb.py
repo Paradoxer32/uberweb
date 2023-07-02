@@ -1,5 +1,5 @@
 # Version.
-version = '1.6(Beta)'
+version = '1.7(Beta)'
 
 # Modules.
 from argparse import ArgumentParser
